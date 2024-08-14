@@ -1,0 +1,60 @@
+/* Surff body variables */
+body{
+    /* Light variables */
+    --sf-accent: var(--sf-accent-light);
+    --sf-accent-secondary: var(--sf-accent-secondary-light);
+    --sf-accent-tertiary: var(--sf-accent-tertiary-light);
+    --sf-accent-quaternary: var(--sf-accent-quaternary-light);
+
+    --sf-contrast: var(--sf-contrast-light);
+    --sf-contrast-secondary: var(--sf-contrast-secondary-light);
+    --sf-contrast-tertiary: var(--sf-contrast-tertiary-light);
+    --sf-contrast-quaternary: var(--sf-contrast-quaternary-light);
+
+    --sf-background: var(--sf-background-light);
+    --sf-background-secondary: var(--sf-background-secondary-light);
+    --sf-background-tertiary: var(--sf-background-tertiary-light);
+    --sf-background-quaternary: var(--sf-background-quaternary-light);
+
+    --sf-foreground: var(--sf-foreground-light);
+    --sf-foreground-secondary: var(--sf-foreground-secondary-light);
+    --sf-foreground-tertiary: var(--sf-foreground-tertiary-light);
+    --sf-foreground-quaternary: var(--sf-foreground-quaternary-light);
+
+    --sf-outline: var(--sf-outline-light);
+    --sf-outline-secondary: var(--sf-outline-secondary-light);
+    --sf-outline-tertiary: var(--sf-outline-tertiary-light);
+    --sf-outline-quaternary: var(--sf-outline-quaternary-light);
+
+    /* Global styles */
+    background-color: var(--sf-background);
+    color: var(--sf-foreground);
+}
+
+body.sf-dark{
+    /* Dark mode */
+    --sf-accent: var(--sf-accent-dark);
+    --sf-accent-secondary: var(--sf-accent-secondary-dark);
+    --sf-accent-tertiary: var(--sf-accent-tertiary-dark);
+    --sf-accent-quaternary: var(--sf-accent-quaternary-dark);
+
+    --sf-contrast: var(--sf-contrast-dark);
+    --sf-contrast-secondary: var(--sf-contrast-secondary-dark);
+    --sf-contrast-tertiary: var(--sf-contrast-tertiary-dark);
+    --sf-contrast-quaternary: var(--sf-contrast-quaternary-dark);
+
+    --sf-background: var(--sf-background-dark);
+    --sf-background-secondary: var(--sf-background-secondary-dark);
+    --sf-background-tertiary: var(--sf-background-tertiary-dark);
+    --sf-background-quaternary: var(--sf-background-quaternary-dark);
+
+    --sf-foreground: var(--sf-foreground-dark);
+    --sf-foreground-secondary: var(--sf-foreground-secondary-dark);
+    --sf-foreground-tertiary: var(--sf-foreground-tertiary-dark);
+    --sf-foreground-quaternary: var(--sf-foreground-quaternary-dark);
+
+    --sf-outline: var(--sf-outline-dark);
+    --sf-outline-secondary: var(--sf-outline-secondary-dark);
+    --sf-outline-tertiary: var(--sf-outline-tertiary-dark);
+    --sf-outline-quaternary: var(--sf-outline-quaternary-dark);
+}

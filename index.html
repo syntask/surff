@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Surff Color Palette Tool</title>
+    <script src="colorUtils.js"></script>
+    <link rel="stylesheet" href="surff-basic.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+
+    <!-- Import Pickr -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr@latest/dist/themes/classic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+</head>
+<body>
+    <div class="modal-container hidden" id="export-css-modal-container">
+        <div class="modal export-css-modal">
+            <div class="label">CSS Output</div>
+            <textarea id="css-textarea" class="modal-textarea"></textarea>
+            <div class="h-flex gap-1em">
+                <button class="button button-primary" id="button-copy-css">Copy</button>
+                <button class="button button-primary" id="button-close-export-css-modal">Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="row navbar">
+        <div class="content-area">
+            <div class="h-flex stretch valign-center gap-025em">
+                <div class="logo">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 400 400">
+                        <path d="M200,14.3654175C97.4768677,14.3654175,14.3654175,97.4768066,14.3654175,200S97.4768677,385.6345825,200,385.6345825
+                            S385.6345825,302.5231323,385.6345825,200S302.5231323,14.3654175,200,14.3654175z M278.37854,158.7572174
+                            c-13.1289978-13.1290131-61.5828247-17.7216797-101.456604,5.7595367
+                            c-18.4238281,10.8495789-26.5825195,22.1520996-33.6711884,28.7977295
+                            c-8.7344971,8.1885986-38.5446548,55.823288-54.0511246,58.0384979C67.3202438,254.4786072,56.1723633,236.1570435,56.1723633,200
+                            c0-79.4338379,64.3938599-143.8276367,143.8276367-143.8276367S343.8276367,120.5661621,343.8276367,200
+                            c0,29.1701813-16.9073792,49.7686615-42.4109192,56.2264404c-21.5467529,5.4559021-46.8049164-4.2810059-57.1524048-24.3673096
+                            c-10.9806671-21.3154144-6.4354706-38.4955444,6.2025909-52.2789459
+                            C262.3882446,166.578476,280.9592285,161.3378906,278.37854,158.7572174z"/>
+                    </svg>
+                </div>
+                <div class="navbar-title">Surff</div>
+                <div class="flex-grow"></div>
+                <div class="navbar-hamburger-menu">
+                    <div class="hamburger-line hamburger-top"></div>
+                    <div class="hamburger-line hamburger-middle"></div>
+                    <div class="hamburger-line hamburger-bottom"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row flex-grow">
+        <div class="content-area">
+            <div class="body-h-flex">
+                <div class="sidebar-content">
+                    <div class="v-flex option-list">
+
+                        <div class="option-container">
+                            <label for="color-scheme" class="label">Color scheme</label>
+                            <div class="h-flex">
+                                <select name="color-scheme" class="flex-grow">
+                                    <option value="both">Both</option>
+                                    <option value="light">Light</option>
+                                    <option value="dark">Dark</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="option-container">
+                            <label for="softness" class="label">Softness</label>
+                            <div class="h-flex">
+                                <input type="range" name="softness" class="flex-grow" min="0" max="100" value="25">
+                            </div>
+                        </div>
+
+                        <div class="option-container">
+                            <label for="tint" class="label">Tint</label>
+                            <div class="h-flex">
+                                <input type="range" name="tint" class="flex-grow" min="0" max="100" value="50">
+                            </div>
+                        </div>
+
+                        <div class="option-container">
+                            <button class="button button-primary" id="button-export-css">Export CSS</button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="main-content">
+                    <div class="v-flex">
+                        <div class="color-group-title">Accent color</div>
+                        <div class = "color-group-container">
+                            <div class="v-flex">
+                                <div class="h-flex swatch light-swatch">
+                                    <div data-color-id="--sf-accent-light" class="color-swatch"></div>
+                                    <div data-color-id="--sf-accent-secondary-light" class="color-swatch"></div>
+                                    <div data-color-id="--sf-accent-tertiary-light" class="color-swatch"></div>
+                                    <div data-color-id="--sf-accent-quaternary-light" class="color-swatch"></div>
+                                </div>
+                        
+                                <div class="h-flex swatch dark-swatch">
+                                    <div data-color-id="--sf-accent-dark" class="color-swatch"></div>
+                                    <div data-color-id="--sf-accent-secondary-dark" class="color-swatch"></div>
+                                    <div data-color-id="--sf-accent-tertiary-dark" class="color-swatch"></div>
+                                    <div data-color-id="--sf-accent-quaternary-dark" class="color-swatch"></div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <br><br>
+            
+                        <div class="color-group-title">Contrast color</div>
+                        <div class = "color-group-container">
+                            <div class="v-flex">
+                                <div class="h-flex swatch light-swatch">
+                                    <div data-color-id="--sf-contrast-light" class="color-swatch"></div>
+                                    <div data-color-id="--sf-contrast-secondary-light" class="color-swatch"></div>
+                                    <div data-color-id="--sf-contrast-tertiary-light" class="color-swatch"></div>
+                                    <div data-color-id="--sf-contrast-quaternary-light" class="color-swatch"></div>
+                                </div>
+                        
+                                <div class="h-flex swatch dark-swatch">
+                                    <div data-color-id="--sf-contrast-dark" class="color-swatch"></div>
+                                    <div data-color-id="--sf-contrast-secondary-dark" class="color-swatch"></div>
+                                    <div data-color-id="--sf-contrast-tertiary-dark" class="color-swatch"></div>
+                                    <div data-color-id="--sf-contrast-quaternary-dark" class="color-swatch"></div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <br><br>
+            
+                        <div class="color-group-title">Background color</div>
+                        <div class = "color-group-container">
+                            <div class="v-flex">
+                                <div class="h-flex swatch light-swatch">
+                                    <div data-color-id="--sf-background-light" class="color-swatch"></div>
+                                    <div data-color-id="--sf-background-secondary-light" class="color-swatch"></div>
+                                    <div data-color-id="--sf-background-tertiary-light" class="color-swatch"></div>
+                                    <div data-color-id="--sf-background-quaternary-light" class="color-swatch"></div>
+                                </div>
+                                <div class="h-flex swatch dark-swatch">
+                                    <div data-color-id="--sf-background-dark" class="color-swatch"></div>
+                                    <div data-color-id="--sf-background-secondary-dark" class="color-swatch"></div>
+                                    <div data-color-id="--sf-background-tertiary-dark" class="color-swatch"></div>
+                                    <div data-color-id="--sf-background-quaternary-dark" class="color-swatch"></div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <br><br>
+            
+                        <div class="color-group-title">Foreground color</div>
+                        <div class = "color-group-container">
+                            <div class="v-flex">
+                                <div class="h-flex swatch light-swatch">
+                                    <div data-color-id="--sf-foreground-light" class="color-swatch"></div>
+                                    <div data-color-id="--sf-foreground-secondary-light" class="color-swatch"></div>
+                                    <div data-color-id="--sf-foreground-tertiary-light" class="color-swatch"></div>
+                                    <div data-color-id="--sf-foreground-quaternary-light" class="color-swatch"></div>
+                                </div>
+                                <div class="h-flex swatch dark-swatch">
+                                    <div data-color-id="--sf-foreground-dark" class="color-swatch"></div>
+                                    <div data-color-id="--sf-foreground-secondary-dark" class="color-swatch"></div>
+                                    <div data-color-id="--sf-foreground-tertiary-dark" class="color-swatch"></div>
+                                    <div data-color-id="--sf-foreground-quaternary-dark" class="color-swatch"></div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <br><br>
+            
+                        <div class="color-group-title">Outline color</div>
+                        <div class = "color-group-container">
+                            <div class="v-flex">
+                                <div class="h-flex swatch light-swatch">
+                                    <div data-color-id="--sf-outline-light" class="color-swatch"></div>
+                                    <div data-color-id="--sf-outline-secondary-light" class="color-swatch"></div>
+                                    <div data-color-id="--sf-outline-tertiary-light" class="color-swatch"></div>
+                                    <div data-color-id="--sf-outline-quaternary-light" class="color-swatch"></div>
+                                </div>
+                                <div class="h-flex swatch dark-swatch">
+                                    <div data-color-id="--sf-outline-dark" class="color-swatch"></div>
+                                    <div data-color-id="--sf-outline-secondary-dark" class="color-swatch"></div>
+                                    <div data-color-id="--sf-outline-tertiary-dark" class="color-swatch"></div>
+                                    <div data-color-id="--sf-outline-quaternary-dark" class="color-swatch"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row footer">
+        <div class="content-area">
+            <div class="h-flex">
+                © Isaac Neumann. All Rights Reserved.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
